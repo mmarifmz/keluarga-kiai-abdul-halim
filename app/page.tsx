@@ -8,7 +8,7 @@ type Person = { name: string; phone?: string; deceased?: boolean; spouse?: Perso
 const branches: Person[] = [
   { name: 'Wan', deceased: true, children: [{ name: 'Safiah' }] },
   { name: 'Arpah', deceased: true },
-  { name: 'Hashim', deceased: true, spouse: { name: 'Aminah' }, children: [{ name: 'Mohd. Khair Johari', deceased: true }, { name: 'Mohd. Khalil', phone: '017-2954495' }, { name: 'Masitah', phone: '011-18012750', spouse: { name: 'Mior Zamri' }, children: [{ name: 'Mior Mohd Arif', phone: '011-40030076' }, { name: 'Mior Mohd Azam', phone: '013-3113404' }] }, { name: 'Halimatun Saadiah', phone: '012-9362853' }, { name: 'Hamidah', phone: '010-4342862' }] },
+  { name: 'Hashim', deceased: true, spouse: { name: 'Aminah' }, children: [{ name: 'Mohd. Khair Johari', deceased: true }, { name: 'Mohd. Khalil', phone: '017-2954495' }, { name: 'Masitah', phone: '+60 11-1501 2750', spouse: { name: 'Mior Zamri' }, children: [{ name: 'Mior Mohd Arif', phone: '011-40030076' }, { name: 'Mior Mohd Azam', phone: '013-3113404' }] }, { name: 'Halimatun Saadiah', phone: '012-9362853' }, { name: 'Hamidah', phone: '010-4342862' }] },
   { name: 'Zainal Abidin', deceased: true },
   { name: 'Salmah', spouse: { name: 'Md. Rejab' }, children: [{ name: 'Kamariah', phone: '019-5377866' }, { name: 'Md. Saad', phone: '010-2213001' }, { name: 'Mohd. Yusof', phone: '013-3382986' }, { name: 'Saadiah', phone: '011-64142042' }, { name: 'Mustapha', deceased: true }] },
   { name: 'Jamaliah', deceased: true },
@@ -36,7 +36,7 @@ function Descendant({ person, depth = 0 }: { person: Person; depth?: number }) {
           <PersonName person={person} />
           {person.spouse && <div className="spouse-line"><Heart aria-hidden="true" size={13} /><span>{person.spouse.name}</span></div>}
         </div>
-        {person.phone && <a className="phone-link" href={`tel:${person.phone.replaceAll('-', '')}`} aria-label={`Telefon ${person.name} di ${person.phone}`}><Phone aria-hidden="true" size={15} /><span>{person.phone}</span></a>}
+        {person.phone && <a className="phone-link" href={`tel:${person.phone.replace(/[^\d+]/g, '')}`} aria-label={`Telefon ${person.name} di ${person.phone}`}><Phone aria-hidden="true" size={15} /><span>{person.phone}</span></a>}
       </div>
       {person.children && <ul className="descendant-list nested">{person.children.map((child) => <Descendant key={child.name} person={child} depth={depth + 1} />)}</ul>}
     </li>
