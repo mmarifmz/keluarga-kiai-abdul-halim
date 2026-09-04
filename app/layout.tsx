@@ -7,7 +7,7 @@ const newsreader = Newsreader({ variable: '--font-newsreader', subsets: ['latin'
 
 export const metadata: Metadata = {
   title: 'Salasilah Keluarga Kiai Hj. Abdul Halim',
-  description: 'Salasilah keluarga Kiai Hj. Abdul Halim hingga lima generasi.',
+  description: 'Salasilah keluarga Kiai Hj. Abdul Halim hingga enam generasi.',
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
