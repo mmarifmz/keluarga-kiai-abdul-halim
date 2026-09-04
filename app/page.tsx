@@ -10,8 +10,9 @@ const branches: Person[] = [
   { name: 'Arpah', deceased: true },
   { name: 'Zainal Abidin', deceased: true, children: [{ name: 'Hashim', spouse: { name: 'Aminah' }, children: [{ name: 'Mohd. Khair Johari', deceased: true }, { name: 'Mohd. Khalil', phone: '017-2954495' }, { name: 'Masitah', phone: '011-18012750' }, { name: 'Halimatun Saadiah', phone: '012-9362853' }, { name: 'Hamidah', phone: '010-4342862' }] }] },
   { name: 'Jamaliah', deceased: true, children: [{ name: 'Salmah', spouse: { name: 'Md. Rejab' }, children: [{ name: 'Kamariah', phone: '019-5377866' }, { name: 'Md. Saad', phone: '010-2213001' }, { name: 'Mohd. Yusof', phone: '013-3382986' }, { name: 'Saadiah', phone: '011-64142042' }, { name: 'Mustapha', deceased: true }] }] },
-  { name: 'Ahmad', deceased: true, children: [{ name: 'Che Gayah', spouse: { name: 'Shaik Mohamed' }, children: [{ name: 'Shaik Malek', phone: '016-4542203', children: [{ name: 'S. Ismail', deceased: true }, { name: 'S. Shukor', phone: '011-67697553' }, { name: 'Salina', phone: '017-4799228' }, { name: 'Rabiani', phone: '013-4893888' }] }] }] },
-  { name: 'Din', deceased: true, children: [{ name: 'Zahrah', spouse: { name: 'Aizudin' }, children: [{ name: 'Rosnah', phone: '016-2960974' }, { name: 'Rosly', phone: '012-9703974' }, { name: 'Rafidah', phone: '018-3813838' }, { name: 'Jamilah', phone: '011-29539152' }] }] },
+  { name: 'Ahmad', deceased: true, children: [{ name: 'Che Gayah', spouse: { name: 'Shaik Mohamed' }, children: [{ name: 'Shaik Malek', phone: '016-4542203' }, { name: 'Shaik Ismail', deceased: true }, { name: 'Shaik Shukor', phone: '011-67697553' }, { name: 'Salina', phone: '017-4799228' }, { name: 'Rabiani', phone: '013-4893888' }] }] },
+  { name: 'Din', deceased: true },
+  { name: 'Zahrah', spouse: { name: 'Aizudin' }, children: [{ name: 'Rosnah', phone: '016-2960974' }, { name: 'Rosly', phone: '012-9703974' }, { name: 'Rafidah', phone: '018-3813838' }, { name: 'Jamilah', phone: '011-29539152' }] },
   { name: 'Zainab' },
 ];
 
@@ -62,7 +63,7 @@ export default function Home() {
     <main>
       <header className="site-header">
         <a className="brand" href="#top" aria-label="Ke bahagian atas"><span className="brand-mark"><Leaf aria-hidden="true" size={19} /></span><span>Salasilah Keluarga</span></a>
-        <div className="header-detail"><UsersRound aria-hidden="true" size={17} /><span>40 ahli · 7 generasi</span></div>
+        <div className="header-detail"><UsersRound aria-hidden="true" size={17} /><span>40 ahli · 6 generasi</span></div>
       </header>
 
       <section className="heritage-hero" id="top">
@@ -85,7 +86,7 @@ export default function Home() {
 
       <section className="family-section" aria-labelledby="family-title">
         <div className="section-intro">
-          <div><p className="eyebrow">Keturunan Hj. Yusof &amp; Teh</p><h2 id="family-title">Tujuh cabang keluarga</h2></div>
+          <div><p className="eyebrow">Keturunan Hj. Yusof &amp; Teh</p><h2 id="family-title">Lapan cabang keluarga</h2></div>
           <label className="search-box"><Search aria-hidden="true" size={19} /><span className="sr-only">Cari ahli keluarga atau nombor telefon</span><input type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Cari nama atau telefon…" />{query && <button type="button" onClick={() => setQuery('')} aria-label="Kosongkan carian"><X aria-hidden="true" size={17} /></button>}</label>
         </div>
         {filteredBranches.length ? <div className="branch-grid">{filteredBranches.map(({ person, index }) => <BranchCard key={person.name} person={person} index={index} forceOpen={Boolean(query.trim())} />)}</div> : <div className="empty-state"><Search aria-hidden="true" size={24} /><h3>Tiada nama ditemui</h3><p>Cuba ejaan atau nombor telefon yang lain.</p><button type="button" onClick={() => setQuery('')}>Lihat semua keluarga</button></div>}
