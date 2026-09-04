@@ -51,7 +51,11 @@ function BranchCard({ person, index, forceOpen }: { person: Person; index: numbe
     <article className={`branch-card ${isOpen ? 'is-open' : ''}`}>
       <button className="branch-heading" type="button" onClick={() => hasDetails && setOpen((value) => !value)} aria-expanded={isOpen} disabled={!hasDetails}>
         <span className="branch-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
-        <span className="branch-title"><PersonName person={person} prominent /><span className="branch-meta">{person.children?.length ? 'Lihat keturunan' : 'Rekod keluarga'}</span></span>
+        <span className="branch-title">
+          <PersonName person={person} prominent />
+          {person.spouse && <span className="branch-spouse"><Heart aria-hidden="true" size={13} /><span>{person.spouse.name}</span></span>}
+          <span className="branch-meta">{person.children?.length ? 'Lihat keturunan' : 'Rekod keluarga'}</span>
+        </span>
         {hasDetails && <ChevronDown className="chevron" aria-hidden="true" size={20} />}
       </button>
       {isOpen && person.children && <div className="branch-content"><ul className="descendant-list">{person.children.map((child) => <Descendant key={child.name} person={child} />)}</ul></div>}

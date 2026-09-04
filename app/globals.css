@@ -51,6 +51,8 @@ h1 { margin:0; font-size:clamp(2.7rem,7vw,5.8rem); line-height:.96; letter-spaci
 .branch-heading:disabled { cursor:default; }
 .branch-number { width:42px; height:42px; display:grid; place-items:center; border-radius:50% 50% 50% 13px; background:var(--mint-light); color:var(--forest); font-size:.76rem; font-weight:850; }
 .branch-title { min-width:0; }
+.branch-spouse { display:flex; align-items:center; gap:5px; margin-top:4px; color:#9b6e35; font-size:.78rem; font-weight:650; }
+.branch-spouse svg { flex:0 0 auto; fill:currentColor; }
 .person-line { display:flex; flex-wrap:wrap; align-items:center; gap:7px; }
 .person-name { font-weight:760; line-height:1.35; }
 .person-name.prominent { font-family:var(--font-newsreader),Georgia,serif; font-size:1.3rem; font-weight:630; }
