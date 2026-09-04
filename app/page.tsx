@@ -1,9 +1,14 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { ChevronDown, Heart, Leaf, Phone, Search, Sparkles, UsersRound, X } from 'lucide-react';
+import { ChevronDown, Heart, Leaf, MessageCircle, Search, Sparkles, UsersRound, X } from 'lucide-react';
 
 type Person = { name: string; phone?: string; deceased?: boolean; spouse?: Person; children?: Person[] };
+
+function toWhatsAppNumber(phone: string) {
+  const digits = phone.replace(/\D/g, '');
+  return digits.startsWith('0') ? `60${digits.slice(1)}` : digits;
+}
 
 const branches: Person[] = [
   { name: 'Wan', deceased: true, children: [{ name: 'Safiah' }] },
@@ -36,7 +41,7 @@ function Descendant({ person, depth = 0 }: { person: Person; depth?: number }) {
           <PersonName person={person} />
           {person.spouse && <div className="spouse-line"><Heart aria-hidden="true" size={13} /><span>{person.spouse.name}</span></div>}
         </div>
-        {person.phone && <a className="phone-link" href={`tel:${person.phone.replace(/[^\d+]/g, '')}`} aria-label={`Telefon ${person.name} di ${person.phone}`}><Phone aria-hidden="true" size={15} /><span>{person.phone}</span></a>}
+        {person.phone && <a className="phone-link" href={`https://wa.me/${toWhatsAppNumber(person.phone)}`} target="_blank" rel="noreferrer" aria-label={`WhatsApp ${person.name} di ${person.phone}`}><MessageCircle aria-hidden="true" size={15} /><span>{person.phone}</span></a>}
       </div>
       {person.children && <ul className="descendant-list nested">{person.children.map((child) => <Descendant key={child.name} person={child} depth={depth + 1} />)}</ul>}
     </li>
@@ -69,7 +74,7 @@ export default function Home() {
   return (
     <main>
       <header className="site-header">
-        <a className="brand" href="#top" aria-label="Ke bahagian atas"><span className="brand-mark"><Leaf aria-hidden="true" size={19} /></span><span>Salasilah Keluarga</span></a>
+        <a className="brand" href="#top" aria-label="Ke bahagian atas"><span className="brand-mark"><Leaf aria-hidden="true" size={19} /></span><span>Salasilah Keluarga Kiai Hj. Abdul Halim</span></a>
         <div className="header-detail"><UsersRound aria-hidden="true" size={17} /><span>43 ahli · 6 generasi</span></div>
       </header>
 
