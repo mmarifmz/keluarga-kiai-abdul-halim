@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { ChevronDown, Heart, Leaf, Menu, MessageCircle, Search, Sparkles, UsersRound, X } from 'lucide-react';
+import { CalendarDays, ChevronDown, Heart, Leaf, Menu, MessageCircle, Search, Sparkles, UsersRound, X } from 'lucide-react';
 
 type Person = { name: string; phone?: string; deceased?: boolean; spouse?: Person; children?: Person[]; note?: string };
 
@@ -106,6 +106,7 @@ export default function Home() {
         <a className="brand" href="#top" aria-label="Ke bahagian atas"><span className="brand-mark"><Leaf aria-hidden="true" size={19} /></span><span>Salasilah Keluarga Kiai Hj. Abdul Halim</span></a>
         <nav id="site-menu" className={menuOpen ? 'site-nav is-open' : 'site-nav'} aria-label="Navigasi utama">
           <a href="#top" onClick={() => setMenuOpen(false)}>Utama</a>
+          <a href="/program-2026" onClick={() => setMenuOpen(false)}><CalendarDays aria-hidden="true" size={14} /> Program 2026</a>
           <a href="#carta" onClick={() => setMenuOpen(false)}>Carta Keluarga</a>
           <a href="#keluarga" onClick={() => setMenuOpen(false)}>Senarai Keluarga</a>
           <a className="nav-contact" href={contactWhatsAppUrl} target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)}>Hubungi</a>
