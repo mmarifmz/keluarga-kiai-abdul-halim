@@ -1,0 +1,26 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Salasilah Keluarga Kiai Hj. Abdul Halim//Program 2026//MS
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:Asia/Kuala_Lumpur
+BEGIN:STANDARD
+DTSTART:19700101T000000
+TZOFFSETFROM:+0800
+TZOFFSETTO:+0800
+TZNAME:MYT
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:20260912T103000-perhimpunan-keluarga@keluarga-kiai-abdul-halim.arif.my
+DTSTAMP:20260906T000000Z
+DTSTART;TZID=Asia/Kuala_Lumpur:20260912T103000
+DTEND;TZID=Asia/Kuala_Lumpur:20260912T150000
+SUMMARY:Majlis Keluarga Besar Haji Shukur
+DESCRIPTION:Perhimpunan keluarga untuk bertahlil\, berkenalan\, menikmati jamuan dan mengeratkan silaturrahim. Maklumat lanjut: https://keluarga-kiai-abdul-halim.arif.my/program-2026
+LOCATION:Dewan Orang Ramai Taman Koperasi Polis Fasa 2\, Kuala Lumpur
+URL:https://keluarga-kiai-abdul-halim.arif.my/program-2026
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR
