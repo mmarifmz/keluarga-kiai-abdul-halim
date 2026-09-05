@@ -3,14 +3,14 @@
 import { useMemo, useState } from 'react';
 import { ChevronDown, Heart, Leaf, MessageCircle, Search, Sparkles, UsersRound, X } from 'lucide-react';
 
-type Person = { name: string; phone?: string; deceased?: boolean; spouse?: Person; children?: Person[] };
+type Person = { name: string; phone?: string; deceased?: boolean; spouse?: Person; children?: Person[]; note?: string };
 
 function toWhatsAppNumber(phone: string) {
   const digits = phone.replace(/\D/g, '');
   return digits.startsWith('0') ? `60${digits.slice(1)}` : digits;
 }
 
-const branches: Person[] = [
+const yusofBranches: Person[] = [
   { name: 'Wan', deceased: true, children: [{ name: 'Safiah' }] },
   { name: 'Arpah', deceased: true },
   { name: 'Hashim', deceased: true, spouse: { name: 'Aminah' }, children: [{ name: 'Mohd. Khair Johari', deceased: true }, { name: 'Mohd. Khalil', phone: '017-2954495' }, { name: 'Masitah', phone: '+60 11-1501 2750', spouse: { name: 'Mior Zamri' }, children: [{ name: 'Mior Mohd Arif', phone: '011-40030076' }, { name: 'Mior Mohd Azam', phone: '013-3113404' }] }, { name: 'Halimatun Saadiah', phone: '012-9362853' }, { name: 'Hamidah', phone: '010-4342862' }] },
@@ -22,6 +22,17 @@ const branches: Person[] = [
   { name: 'Zahrah', spouse: { name: 'Aizudin' }, children: [{ name: 'Rosnah', phone: '016-2960974' }, { name: 'Rosly', phone: '012-9703974' }, { name: 'Rafidah', phone: '018-3813838' }, { name: 'Jamilah', phone: '011-29539152' }] },
   { name: 'Din', deceased: true },
   { name: 'Zainab' },
+];
+
+const branches: Person[] = [
+  { name: 'Hj. Ahmad', spouse: { name: 'Aishah' }, children: [{ name: 'Kamsinah' }, { name: 'Hj. Mukri' }, { name: 'Subari' }, { name: 'Hj. Rashid' }, { name: 'Hj. Deraman' }, { name: 'Juriah' }, { name: 'Saniah' }, { name: 'Milah' }] },
+  { name: 'Hj. Yusof bin Hj. Shukur', spouse: { name: 'Teh binti Saad' }, children: yusofBranches },
+  { name: 'Hj. Husin', spouse: { name: 'Khatijah' }, children: [{ name: 'Abdul Hamid' }, { name: 'Hj. Abdul Rahman' }, { name: 'Abdul Majid' }, { name: 'Yahaya' }, { name: 'Abdul Latif' }, { name: 'Salim' }, { name: 'Mohammad' }] },
+  { name: 'Hj. Abdul Ghani', spouse: { name: 'Hjh. Rafeah' }, children: [{ name: 'Hasmah' }, { name: 'Halimah' }, { name: 'Umi Kalthum' }, { name: 'Ahmad Maulana' }, { name: 'Ahmad Kamaruddin' }] },
+  { name: 'Hj. Markum', spouse: { name: 'Muhammad Hasanah' }, children: [{ name: 'Azizah' }, { name: "Robe'ah" }, { name: 'Jamilah' }, { name: 'Hafsah' }] },
+  { name: 'Mak Teh Sanah', spouse: { name: 'Hj. Hassan' }, children: [{ name: 'Kak Besar' }, { name: 'Jamaliah' }, { name: 'Hj. Abd Majid' }, { name: 'Fatimah' }, { name: 'Saadiah' }, { name: 'Abdul Rahman' }] },
+  { name: 'Mersinah', spouse: { name: 'Saji bin Hassan' }, children: [{ name: 'Ismail' }, { name: 'Sulaiman' }, { name: 'Ishak' }, { name: 'Mustafa Ramdhan' }, { name: 'Rosimah' }] },
+  { name: 'Hjh. Mariyah', spouse: { name: 'Hj. Kasri' }, children: [{ name: 'Satariah' }, { name: 'Saadiah' }, { name: 'Maimunah' }, { name: 'Muslim' }, { name: 'Suhaimi' }, { name: 'Rokiah' }, { name: 'Arshad' }], note: 'Turut dicatat dalam rekod asal: lain-lain satu bapa.' },
 ];
 
 function personMatches(person: Person, query: string): boolean {
@@ -40,6 +51,7 @@ function Descendant({ person, depth = 0 }: { person: Person; depth?: number }) {
         <div className="descendant-main">
           <PersonName person={person} />
           {person.spouse && <div className="spouse-line"><Heart aria-hidden="true" size={13} /><span>{person.spouse.name}</span></div>}
+          {person.note && <p className="family-note">{person.note}</p>}
         </div>
         {person.phone && <a className="phone-link" href={`https://wa.me/${toWhatsAppNumber(person.phone)}`} target="_blank" rel="noreferrer" aria-label={`WhatsApp ${person.name} di ${person.phone}`}><MessageCircle aria-hidden="true" size={15} /><span>{person.phone}</span></a>}
       </div>
@@ -59,11 +71,11 @@ function BranchCard({ person, index, forceOpen }: { person: Person; index: numbe
         <span className="branch-title">
           <PersonName person={person} prominent />
           {person.spouse && <span className="branch-spouse"><Heart aria-hidden="true" size={13} /><span>{person.spouse.name}</span></span>}
-          <span className="branch-meta">{person.children?.length ? 'Lihat keturunan' : 'Rekod keluarga'}</span>
+          <span className="branch-meta">{person.children?.length ? `${person.children.length} nama dalam rekod` : 'Rekod keluarga'}</span>
         </span>
         {hasDetails && <ChevronDown className="chevron" aria-hidden="true" size={20} />}
       </button>
-      {isOpen && person.children && <div className="branch-content"><ul className="descendant-list">{person.children.map((child) => <Descendant key={child.name} person={child} />)}</ul></div>}
+      {isOpen && person.children && <div className="branch-content"><ul className="descendant-list">{person.children.map((child) => <Descendant key={child.name} person={child} />)}</ul>{person.note && <p className="branch-note">{person.note}</p>}</div>}
     </article>
   );
 }
@@ -75,7 +87,7 @@ export default function Home() {
     <main>
       <header className="site-header">
         <a className="brand" href="#top" aria-label="Ke bahagian atas"><span className="brand-mark"><Leaf aria-hidden="true" size={19} /></span><span>Salasilah Keluarga Kiai Hj. Abdul Halim</span></a>
-        <div className="header-detail"><UsersRound aria-hidden="true" size={17} /><span>43 ahli · 6 generasi</span></div>
+        <div className="header-detail"><UsersRound aria-hidden="true" size={17} /><span>99 ahli · 6 generasi</span></div>
       </header>
 
       <section className="heritage-hero" id="top">
@@ -84,21 +96,17 @@ export default function Home() {
         <h1>Kiai Hj. Abdul Halim</h1>
         <p className="hero-copy">Menyusuri nama, kasih dan hubungan yang menyatukan enam generasi.</p>
         <div className="ancestor-path" aria-label="Garis keturunan utama">
-          <div className="ancestor-card founder"><span className="generation-label">Generasi pertama</span><strong>Kiai Hj. Abdul Halim</strong></div>
+          <div className="ancestor-card founder"><span className="generation-label">Generasi pertama</span><strong>Kiai Hj. Abdul Halim</strong><span className="founder-detail">Radin Kasumo Sastro Amijoyo <small>Gelaran asal Jawa</small></span><span className="founder-origin">Kampung Demak, Semarang, Jawa Tengah</span></div>
           <div className="line-drop" aria-hidden="true" />
           <div className="ancestor-card couple">
-            <div><span className="generation-label">Generasi kedua</span><strong>Hj. Shukur bin Halim</strong></div><span className="heart-medallion" aria-hidden="true"><Heart size={16} /></span><div><span className="generation-label">Isteri</span><strong>Hjh. Mariam bt. Abd. Rahman</strong></div>
-          </div>
-          <div className="line-drop" aria-hidden="true" />
-          <div className="ancestor-card couple focal">
-            <div><span className="generation-label">Generasi ketiga</span><strong>Hj. Yusof bin Hj. Shukur</strong></div><span className="heart-medallion" aria-hidden="true"><Heart size={16} /></span><div><span className="generation-label">Isteri</span><strong>Teh binti Saad</strong></div>
+            <div><span className="generation-label">Generasi kedua</span><strong>Hj. Shukur bin Hj. Abdul Halim</strong></div><span className="heart-medallion" aria-hidden="true"><Heart size={16} /></span><div><span className="generation-label">Isteri</span><strong>Hjh. Mariam bt. Abdul Rahman</strong></div>
           </div>
         </div>
       </section>
 
       <section className="family-section" aria-labelledby="family-title">
         <div className="section-intro">
-          <div><p className="eyebrow">Keturunan Hj. Yusof &amp; Teh</p><h2 id="family-title">Sebelas cabang keluarga</h2></div>
+          <div><p className="eyebrow">Keturunan Hj. Shukur &amp; Hjh. Mariam</p><h2 id="family-title">Lapan cabang utama</h2><p className="section-copy">Termasuk sebelas cabang keluarga Hj. Yusof dan Teh yang telah direkodkan sebelum ini.</p></div>
           <label className="search-box"><Search aria-hidden="true" size={19} /><span className="sr-only">Cari ahli keluarga atau nombor telefon</span><input type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Cari nama atau telefon…" />{query && <button type="button" onClick={() => setQuery('')} aria-label="Kosongkan carian"><X aria-hidden="true" size={17} /></button>}</label>
         </div>
         {filteredBranches.length ? <div className="branch-grid">{filteredBranches.map(({ person, index }) => <BranchCard key={person.name} person={person} index={index} forceOpen={Boolean(query.trim())} />)}</div> : <div className="empty-state"><Search aria-hidden="true" size={24} /><h3>Tiada nama ditemui</h3><p>Cuba ejaan atau nombor telefon yang lain.</p><button type="button" onClick={() => setQuery('')}>Lihat semua keluarga</button></div>}
