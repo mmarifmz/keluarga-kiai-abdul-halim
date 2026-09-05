@@ -2,21 +2,23 @@ import type { Metadata } from 'next';
 import { ArrowLeft, CalendarDays, Clock3, Leaf, MapPin, MessageCircle, Navigation } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Program Perhimpunan Keluarga 2026 | Salasilah Keluarga Kiai Hj. Abdul Halim',
+  title: 'Program Keluarga 2026 | Kiai Hj. Abdul Halim',
   description: 'Maklumat dan atur cara Perhimpunan Keluarga Besar Haji Shukur pada 12 September 2026 di Taman Koperasi Polis Fasa 2, Kuala Lumpur.',
+  alternates: { canonical: '/program-2026' },
   openGraph: {
     type: 'website',
     locale: 'ms_MY',
+    siteName: 'Salasilah Keluarga Kiai Hj. Abdul Halim',
     url: '/program-2026',
     title: 'Program Perhimpunan Keluarga 2026',
     description: 'Perhimpunan Keluarga Besar Haji Shukur pada 12 September 2026 di Taman Koperasi Polis Fasa 2, Kuala Lumpur.',
-    images: [{ url: '/events/perhimpunan-keluarga-2026.jpg', width: 1280, height: 719, alt: 'Poster rasmi Perhimpunan Keluarga Besar Haji Shukur 2026' }],
+    images: [{ url: '/events/program-2026-1200x630.png', width: 1200, height: 630, type: 'image/png', alt: 'Poster rasmi Perhimpunan Keluarga Besar Haji Shukur 2026 — lihat program dan lokasi' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Program Perhimpunan Keluarga 2026',
     description: 'Perhimpunan Keluarga Besar Haji Shukur pada 12 September 2026.',
-    images: ['/events/perhimpunan-keluarga-2026.jpg'],
+    images: ['/events/program-2026-1200x630.png'],
   },
 };
 

@@ -7,21 +7,24 @@ const newsreader = Newsreader({ variable: '--font-newsreader', subsets: ['latin'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://keluarga-kiai-abdul-halim.arif.my'),
+  applicationName: 'Salasilah Keluarga Kiai Hj. Abdul Halim',
   title: 'Salasilah Keluarga Kiai Hj. Abdul Halim',
-  description: 'Salasilah keluarga Kiai Hj. Abdul Halim yang menghimpunkan 99 ahli dalam 6 generasi, merangkumi 8 cabang utama keluarga Hj. Shukur dan 11 cabang keluarga Hj. Yusof.',
+  description: 'Salasilah digital Kiai Hj. Abdul Halim: 99 ahli, 6 generasi, 8 cabang keluarga Hj. Shukur dan 11 cabang keluarga Hj. Yusof.',
+  alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
     locale: 'ms_MY',
+    siteName: 'Salasilah Keluarga Kiai Hj. Abdul Halim',
     url: '/',
     title: 'Salasilah Keluarga Kiai Hj. Abdul Halim',
     description: 'Carta salasilah digital keluarga Kiai Hj. Abdul Halim — 99 ahli, 6 generasi dan 8 cabang utama keluarga Hj. Shukur.',
-    images: [{ url: '/og-chart.png', width: 1080, height: 856, alt: 'Carta organisasi keluarga Kiai Hj. Abdul Halim' }],
+    images: [{ url: '/og-chart-1200x630.png', width: 1200, height: 630, type: 'image/png', alt: 'Carta organisasi keluarga Kiai Hj. Abdul Halim — lihat carta keluarga' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Salasilah Keluarga Kiai Hj. Abdul Halim',
     description: 'Carta salasilah digital keluarga Kiai Hj. Abdul Halim.',
-    images: ['/og-chart.png'],
+    images: ['/og-chart-1200x630.png'],
   },
 };
 
