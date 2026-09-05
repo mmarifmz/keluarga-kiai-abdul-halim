@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { ChevronDown, Heart, Leaf, MessageCircle, Search, Sparkles, UsersRound, X } from 'lucide-react';
+import { ChevronDown, Heart, Leaf, Menu, MessageCircle, Search, Sparkles, UsersRound, X } from 'lucide-react';
 
 type Person = { name: string; phone?: string; deceased?: boolean; spouse?: Person; children?: Person[]; note?: string };
 
@@ -9,6 +9,8 @@ function toWhatsAppNumber(phone: string) {
   const digits = phone.replace(/\D/g, '');
   return digits.startsWith('0') ? `60${digits.slice(1)}` : digits;
 }
+
+const contactWhatsAppUrl = `https://wa.me/601140030076?text=${encodeURIComponent('Assalamualaikum, saya ingin berkongsi pembetulan atau maklumat baharu untuk salasilah keluarga.')}`;
 
 const yusofBranches: Person[] = [
   { name: 'Wan', deceased: true, children: [{ name: 'Safiah' }] },
@@ -80,14 +82,36 @@ function BranchCard({ person, index, forceOpen }: { person: Person; index: numbe
   );
 }
 
+function OrgBranch({ person, index }: { person: Person; index: number }) {
+  return (
+    <article className="org-branch">
+      <div className="org-branch-head">
+        <span className="org-index">{String(index + 1).padStart(2, '0')}</span>
+        <strong>{person.name}</strong>
+        {person.spouse && <span><Heart aria-hidden="true" size={12} />{person.spouse.name}</span>}
+      </div>
+      <ul>{person.children?.map((child) => <li key={child.name}>{child.name}</li>)}</ul>
+      {person.note && <p>{person.note}</p>}
+    </article>
+  );
+}
+
 export default function Home() {
   const [query, setQuery] = useState('');
+  const [menuOpen, setMenuOpen] = useState(false);
   const filteredBranches = useMemo(() => branches.map((person, index) => ({ person, index })).filter(({ person }) => !query.trim() || personMatches(person, query.trim())), [query]);
   return (
     <main>
       <header className="site-header">
         <a className="brand" href="#top" aria-label="Ke bahagian atas"><span className="brand-mark"><Leaf aria-hidden="true" size={19} /></span><span>Salasilah Keluarga Kiai Hj. Abdul Halim</span></a>
+        <nav id="site-menu" className={menuOpen ? 'site-nav is-open' : 'site-nav'} aria-label="Navigasi utama">
+          <a href="#top" onClick={() => setMenuOpen(false)}>Utama</a>
+          <a href="#carta" onClick={() => setMenuOpen(false)}>Carta Keluarga</a>
+          <a href="#keluarga" onClick={() => setMenuOpen(false)}>Senarai Keluarga</a>
+          <a className="nav-contact" href={contactWhatsAppUrl} target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)}>Hubungi</a>
+        </nav>
         <div className="header-detail"><UsersRound aria-hidden="true" size={17} /><span>99 ahli · 6 generasi</span></div>
+        <button className="menu-toggle" type="button" onClick={() => setMenuOpen((value) => !value)} aria-expanded={menuOpen} aria-controls="site-menu" aria-label={menuOpen ? 'Tutup menu' : 'Buka menu'}>{menuOpen ? <X aria-hidden="true" size={20} /> : <Menu aria-hidden="true" size={20} />}</button>
       </header>
 
       <section className="heritage-hero" id="top">
@@ -104,7 +128,23 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="family-section" aria-labelledby="family-title">
+      <section className="org-section" id="carta" aria-labelledby="org-title">
+        <div className="org-intro">
+          <div><p className="eyebrow">Pandangan keseluruhan</p><h2 id="org-title">Carta organisasi keluarga</h2></div>
+          <p>Leret ke kiri atau kanan untuk melihat semua lapan cabang keluarga.</p>
+        </div>
+        <div className="org-scroll" tabIndex={0} role="region" aria-label="Carta organisasi lapan cabang keluarga Hj. Shukur">
+          <div className="org-canvas">
+            <div className="org-parent founder-node"><span>Generasi pertama</span><strong>Kiai Hj. Abdul Halim</strong><small>Radin Kasumo Sastro Amijoyo</small><small>Kampung Demak, Semarang, Jawa Tengah</small></div>
+            <div className="org-drop" aria-hidden="true" />
+            <div className="org-parent couple-node"><span>Generasi kedua</span><strong>Hj. Shukur bin Hj. Abdul Halim</strong><small><Heart aria-hidden="true" size={12} /> Hjh. Mariam bt. Abdul Rahman</small></div>
+            <div className="org-tree-line" aria-hidden="true" />
+            <div className="org-branches">{branches.map((person, index) => <OrgBranch key={person.name} person={person} index={index} />)}</div>
+          </div>
+        </div>
+      </section>
+
+      <section className="family-section" id="keluarga" aria-labelledby="family-title">
         <div className="section-intro">
           <div><p className="eyebrow">Keturunan Hj. Shukur &amp; Hjh. Mariam</p><h2 id="family-title">Lapan cabang utama</h2><p className="section-copy">Termasuk sebelas cabang keluarga Hj. Yusof dan Teh yang telah direkodkan sebelum ini.</p></div>
           <label className="search-box"><Search aria-hidden="true" size={19} /><span className="sr-only">Cari ahli keluarga atau nombor telefon</span><input type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Cari nama atau telefon…" />{query && <button type="button" onClick={() => setQuery('')} aria-label="Kosongkan carian"><X aria-hidden="true" size={17} /></button>}</label>
@@ -113,6 +153,7 @@ export default function Home() {
         <div className="legend"><span><span className="legend-dot" /> Garis keturunan</span><span><Heart aria-hidden="true" size={14} /> Pasangan</span><span><span className="mini-pill">Almarhum/ah</span> Telah meninggal dunia</span></div>
       </section>
       <footer><Leaf aria-hidden="true" size={17} /><p>Dipelihara sebagai kenangan untuk generasi hari ini dan akan datang.</p></footer>
+      <a className="floating-whatsapp" href={contactWhatsAppUrl} target="_blank" rel="noreferrer" title="Kemas kini keluarga" aria-label="Hubungi Mior Mohd Arif melalui WhatsApp untuk kemas kini keluarga"><MessageCircle aria-hidden="true" size={23} /><span>Kemas kini keluarga</span></a>
     </main>
   );
 }
