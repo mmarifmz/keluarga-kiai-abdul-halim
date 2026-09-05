@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { ArrowLeft, CalendarDays, Clock3, Leaf, MapPin, MessageCircle } from 'lucide-react';
+import { ArrowLeft, CalendarDays, Clock3, Leaf, MapPin, MessageCircle, Navigation } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Program Perhimpunan Keluarga 2026 | Salasilah Keluarga Kiai Hj. Abdul Halim',
@@ -7,6 +7,7 @@ export const metadata: Metadata = {
 };
 
 const contactWhatsAppUrl = `https://wa.me/601140030076?text=${encodeURIComponent('Assalamualaikum, saya ingin bertanya mengenai Program Perhimpunan Keluarga 2026.')}`;
+const eventWazeUrl = `https://www.waze.com/ul?q=${encodeURIComponent('Dewan Orang Ramai Taman Koperasi Polis Fasa 2, Kuala Lumpur')}&navigate=yes`;
 
 const schedule = [
   ['10:30 pagi', 'Ketibaan ahli keluarga'],
@@ -33,7 +34,7 @@ export default function Program2026() {
           <p className="event-lead">Menghimpunkan ahli keluarga untuk bertahlil, berkenalan dan mengeratkan silaturrahim.</p>
           <div className="event-facts">
             <div><span className="event-fact-icon"><CalendarDays aria-hidden="true" size={20} /></span><p><small>Tarikh</small><strong>12 September 2026</strong><span>12 Rabiulawal 1448H</span></p></div>
-            <div><span className="event-fact-icon"><MapPin aria-hidden="true" size={20} /></span><p><small>Tempat</small><strong>Dewan Orang Ramai</strong><span>Taman Koperasi Polis Fasa 2, Kuala Lumpur</span></p></div>
+            <div><span className="event-fact-icon"><MapPin aria-hidden="true" size={20} /></span><p><small>Tempat</small><strong>Dewan Orang Ramai</strong><span>Taman Koperasi Polis Fasa 2, Kuala Lumpur</span><a className="event-map-link" href={eventWazeUrl} target="_blank" rel="noreferrer" aria-label="Buka lokasi Dewan Orang Ramai Taman Koperasi Polis Fasa 2 di Waze"><Navigation aria-hidden="true" size={16} /> Buka di Waze</a></p></div>
           </div>
         </div>
         <figure className="event-featured-poster">

@@ -147,6 +147,8 @@ footer svg { color:var(--forest); }
 .event-facts small { color:#7d918c; font-size:.68rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; }
 .event-facts strong { font-family:var(--font-newsreader),Georgia,serif; font-size:1.16rem; font-weight:660; }
 .event-facts p>span { color:var(--ink-soft); font-size:.82rem; line-height:1.45; }
+.event-map-link { width:max-content; min-height:38px; margin-top:9px; padding:8px 12px; display:inline-flex; align-items:center; gap:7px; border-radius:11px; background:var(--forest); color:white; text-decoration:none; font-size:.78rem; font-weight:780; transition:background .2s,transform .2s; }
+.event-map-link:hover,.event-map-link:focus-visible { background:var(--forest-deep); transform:translateY(-1px); }
 .event-featured-poster { margin:0; overflow:hidden; border:8px solid var(--paper); border-radius:24px; background:var(--paper); box-shadow:0 22px 60px rgba(60,45,20,.18); transform:rotate(1deg); }
 .event-featured-poster img { width:100%; height:auto; display:block; border-radius:17px; }
 .event-featured-poster figcaption,.poster-grid figcaption { padding:11px 8px 5px; color:#718781; font-size:.72rem; font-weight:680; text-align:center; }
