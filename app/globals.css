@@ -113,8 +113,9 @@ h1 { margin:0; font-size:clamp(2.7rem,7vw,5.8rem); line-height:.96; letter-spaci
 .family-note,.branch-note { color:#718781; font-size:.72rem; line-height:1.45; }
 .family-note { margin:5px 0 0; }
 .branch-note { margin:12px 0 0; padding:10px 12px; border-radius:10px; background:var(--mint-light); }
-.phone-link { flex:0 0 auto; padding:7px 9px; display:inline-flex; align-items:center; gap:6px; border-radius:10px; background:var(--mint-light); color:var(--forest-deep); text-decoration:none; font-size:.75rem; font-weight:760; transition:background .2s,color .2s; }
+.phone-link { width:38px; height:38px; flex:0 0 auto; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; background:var(--mint-light); color:var(--forest-deep); text-decoration:none; transition:background .2s,color .2s,transform .2s; }
 .phone-link:hover { background:var(--forest); color:white; }
+.phone-link:focus-visible { outline:3px solid rgba(22,95,85,.2); outline-offset:2px; }
 .descendant-list.nested { margin-top:6px; }
 .empty-state { padding:60px 20px; border:1px dashed #b7d2c8; border-radius:22px; text-align:center; background:rgba(255,254,249,.6); }
 .empty-state svg { color:var(--gold); }

@@ -40,7 +40,7 @@ const branches: Person[] = [
 
 function personMatches(person: Person, query: string): boolean {
   const term = query.toLocaleLowerCase('ms');
-  return person.name.toLocaleLowerCase('ms').includes(term) || person.phone?.includes(term) === true || (person.spouse ? personMatches(person.spouse, query) : false) || person.children?.some((child) => personMatches(child, query)) === true;
+  return person.name.toLocaleLowerCase('ms').includes(term) || (person.spouse ? personMatches(person.spouse, query) : false) || person.children?.some((child) => personMatches(child, query)) === true;
 }
 
 function PersonName({ person, prominent = false }: { person: Person; prominent?: boolean }) {
@@ -56,7 +56,7 @@ function Descendant({ person, depth = 0 }: { person: Person; depth?: number }) {
           {person.spouse && <div className="spouse-line"><Heart aria-hidden="true" size={13} /><span>{person.spouse.name}</span></div>}
           {person.note && <p className="family-note">{person.note}</p>}
         </div>
-        {person.phone && <a className="phone-link" href={`https://wa.me/${toWhatsAppNumber(person.phone)}`} target="_blank" rel="noreferrer" aria-label={`WhatsApp ${person.name} di ${person.phone}`}><MessageCircle aria-hidden="true" size={15} /><span>{person.phone}</span></a>}
+        {person.phone && <a className="phone-link" href={`https://wa.me/${toWhatsAppNumber(person.phone)}`} target="_blank" rel="nofollow noreferrer" title={`WhatsApp ${person.name}`} aria-label={`Hubungi ${person.name} melalui WhatsApp`}><MessageCircle aria-hidden="true" size={18} /></a>}
       </div>
       {person.children && <ul className="descendant-list nested">{person.children.map((child) => <Descendant key={child.name} person={child} depth={depth + 1} />)}</ul>}
     </li>
@@ -149,7 +149,7 @@ export default function Home() {
       <section className="family-section" id="keluarga" aria-labelledby="family-title">
         <div className="section-intro">
           <div><p className="eyebrow">Keturunan Hj. Shukur &amp; Hjh. Mariam</p><h2 id="family-title">Lapan cabang utama</h2><p className="section-copy">Termasuk sebelas cabang keluarga Hj. Yusof dan Teh yang telah direkodkan sebelum ini.</p></div>
-          <label className="search-box"><Search aria-hidden="true" size={19} /><span className="sr-only">Cari ahli keluarga atau nombor telefon</span><input type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Cari nama atau telefon…" />{query && <button type="button" onClick={() => setQuery('')} aria-label="Kosongkan carian"><X aria-hidden="true" size={17} /></button>}</label>
+          <label className="search-box"><Search aria-hidden="true" size={19} /><span className="sr-only">Cari ahli keluarga</span><input type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Cari nama…" />{query && <button type="button" onClick={() => setQuery('')} aria-label="Kosongkan carian"><X aria-hidden="true" size={17} /></button>}</label>
         </div>
         {filteredBranches.length ? <div className="branch-grid">{filteredBranches.map(({ person, index }) => <BranchCard key={person.name} person={person} index={index} forceOpen={Boolean(query.trim())} />)}</div> : <div className="empty-state"><Search aria-hidden="true" size={24} /><h3>Tiada nama ditemui</h3><p>Cuba ejaan atau nombor telefon yang lain.</p><button type="button" onClick={() => setQuery('')}>Lihat semua keluarga</button></div>}
         <div className="legend"><span><span className="legend-dot" /> Garis keturunan</span><span><Heart aria-hidden="true" size={14} /> Pasangan</span><span><span className="mini-pill">Almarhum/ah</span> Telah meninggal dunia</span></div>
