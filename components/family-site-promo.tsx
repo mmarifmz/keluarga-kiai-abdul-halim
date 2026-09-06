@@ -1,4 +1,4 @@
-import { ArrowUpRight, MessageCircle, Sparkles } from 'lucide-react';
+import { MessageCircle, Sparkles } from 'lucide-react';
 
 const avanteWhatsAppUrl = `https://wa.me/601111055559?text=${encodeURIComponent(
   'Assalamualaikum Avante Intelligence, saya berminat dengan minisite salasilah keluarga serendah RM49.',
@@ -17,10 +17,8 @@ export function FamilySitePromo() {
       </div>
       <div className="family-site-promo-action">
         <div className="family-site-promo-price"><small>Serendah</small><strong>RM49</strong></div>
-        <a href={avanteWhatsAppUrl} target="_blank" rel="noreferrer" aria-label="Hubungi Avante Intelligence melalui WhatsApp di 011-1105 5559">
-          <MessageCircle aria-hidden="true" size={19} />
-          <span><small>Avante Intelligence</small>011-1105 5559</span>
-          <ArrowUpRight aria-hidden="true" size={17} />
+        <a className="family-site-promo-whatsapp" href={avanteWhatsAppUrl} target="_blank" rel="nofollow noreferrer" aria-label="Hubungi Avante Intelligence melalui WhatsApp" title="WhatsApp Avante Intelligence">
+          <MessageCircle aria-hidden="true" size={24} />
         </a>
       </div>
     </aside>
