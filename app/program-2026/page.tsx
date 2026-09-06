@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { ArrowLeft, CalendarDays, CalendarPlus, ChevronDown, Clock3, Leaf, MapPin, MessageCircle, Navigation } from 'lucide-react';
 import { EventCountdown } from './countdown';
+import { PosterLightbox } from './poster-lightbox';
 
 export const metadata: Metadata = {
   title: 'Program Keluarga 2026 | Kiai Hj. Abdul Halim',
@@ -68,10 +69,14 @@ export default function Program2026() {
             </div>
           </details>
         </div>
-        <figure className="event-featured-poster">
-          <img src="/events/perhimpunan-keluarga-2026-v2.png" alt="Poster Perhimpunan Keluarga Besar Haji Shukur pada 12 September 2026 bersamaan 30 Rabiulawal 1448H" width="1680" height="936" />
-          <figcaption>Poster rasmi Perhimpunan Keluarga 2026</figcaption>
-        </figure>
+        <PosterLightbox
+          figureClassName="event-featured-poster"
+          src="/events/perhimpunan-keluarga-2026-v2.png"
+          alt="Poster Perhimpunan Keluarga Besar Haji Shukur pada 12 September 2026 bersamaan 30 Rabiulawal 1448H"
+          width={1680}
+          height={936}
+          caption="Poster rasmi Perhimpunan Keluarga 2026"
+        />
       </section>
 
       <section className="schedule-section" aria-labelledby="schedule-title">
@@ -97,8 +102,8 @@ export default function Program2026() {
           <h2 id="poster-title">Poster program</h2>
         </div>
         <div className="poster-grid">
-          <figure><img src="/events/perhimpunan-keluarga-2026-v2.png" alt="Poster tarikh dan lokasi Perhimpunan Keluarga 2026" width="1680" height="936" /><figcaption>Maklumat perhimpunan</figcaption></figure>
-          <figure><img src="/events/atur-cara-2026.jpg" alt="Poster atur cara Majlis Keluarga Besar Haji Shukur" width="713" height="1280" /><figcaption>Atur cara majlis</figcaption></figure>
+          <PosterLightbox src="/events/perhimpunan-keluarga-2026-v2.png" alt="Poster tarikh dan lokasi Perhimpunan Keluarga 2026" width={1680} height={936} caption="Maklumat perhimpunan" />
+          <PosterLightbox src="/events/atur-cara-2026.jpg" alt="Poster atur cara Majlis Keluarga Besar Haji Shukur" width={713} height={1280} caption="Atur cara majlis" />
         </div>
       </section>
 
