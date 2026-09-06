@@ -65,7 +65,7 @@ function Descendant({ person, depth = 0 }: { person: Person; depth?: number }) {
 }
 
 function BranchCard({ person, index, forceOpen }: { person: Person; index: number; forceOpen: boolean }) {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const isOpen = forceOpen || open;
   const hasDetails = Boolean(person.children?.length || person.phone);
   return (
