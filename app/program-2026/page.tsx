@@ -3,6 +3,7 @@ import { ArrowLeft, CalendarDays, CalendarPlus, ChevronDown, Clock3, Leaf, MapPi
 import { EventCountdown } from './countdown';
 import { PosterLightbox } from './poster-lightbox';
 import { FamilySitePromo } from '@/components/family-site-promo';
+import { FamilySuggestionForm } from '@/components/family-suggestion-form';
 
 export const metadata: Metadata = {
   title: 'Program Keluarga 2026 | Kiai Hj. Abdul Halim',
@@ -110,6 +111,7 @@ export default function Program2026() {
 
       <FamilySitePromo />
       <footer className="event-footer"><p>Jika ada pertanyaan atau pembetulan program, sila hubungi kami melalui WhatsApp.</p><a href={contactWhatsAppUrl} target="_blank" rel="noreferrer"><MessageCircle aria-hidden="true" size={18} /> Hubungi melalui WhatsApp</a></footer>
+      <FamilySuggestionForm />
       <a className="floating-whatsapp" href={contactWhatsAppUrl} target="_blank" rel="noreferrer" title="Pertanyaan program" aria-label="Hubungi melalui WhatsApp untuk pertanyaan Program 2026"><MessageCircle aria-hidden="true" size={23} /><span>Pertanyaan program</span></a>
     </main>
   );

@@ -145,6 +145,24 @@ footer svg { color:var(--forest); }
 .floating-whatsapp { position:fixed; right:22px; bottom:22px; z-index:30; width:56px; height:56px; display:flex; align-items:center; justify-content:center; border:2px solid rgba(255,255,255,.9); border-radius:50%; background:#188f5a; color:white; text-decoration:none; box-shadow:0 12px 32px rgba(8,80,48,.28); transition:transform .2s,background .2s; }
 .floating-whatsapp span { display:none; }
 .floating-whatsapp:hover,.floating-whatsapp:focus-visible { background:#10794a; transform:translateY(-2px); }
+.floating-suggestion { position:fixed; right:22px; bottom:90px; z-index:30; width:50px; height:50px; padding:0; display:grid; place-items:center; border:2px solid rgba(255,255,255,.9); border-radius:50%; background:var(--gold); color:white; cursor:pointer; box-shadow:0 10px 28px rgba(104,70,20,.25); transition:transform .2s,background .2s; }
+.floating-suggestion:hover,.floating-suggestion:focus-visible { background:#aa7429; transform:translateY(-2px); }
+.suggestion-dialog { width:min(92vw,520px); max-width:520px; max-height:92vh; margin:auto; padding:0; border:0; background:transparent; overflow:visible; }
+.suggestion-dialog::backdrop { background:rgba(3,22,20,.68); backdrop-filter:blur(8px); }
+.suggestion-dialog-card { position:relative; max-height:90vh; padding:30px; overflow-y:auto; border:1px solid var(--border); border-radius:24px; background:var(--paper); box-shadow:0 28px 90px rgba(0,0,0,.38); }
+.suggestion-close { position:absolute; top:16px; right:16px; width:40px; height:40px; padding:0; display:grid; place-items:center; border:0; border-radius:50%; background:var(--mint-light); color:var(--forest-deep); cursor:pointer; }
+.suggestion-heading { padding-right:44px; display:flex; align-items:center; gap:13px; }
+.suggestion-heading>span { width:44px; height:44px; flex:0 0 auto; display:grid; place-items:center; border-radius:14px; background:var(--forest); color:white; }
+.suggestion-heading p { margin:0 0 3px; color:var(--gold); font-size:.68rem; font-weight:850; letter-spacing:.12em; text-transform:uppercase; }
+.suggestion-heading h2 { margin:0; font-size:2rem; line-height:1; font-weight:610; }
+.suggestion-intro { margin:18px 0 22px; color:var(--ink-soft); font-size:.88rem; line-height:1.6; }
+.suggestion-form { display:grid; gap:16px; }
+.suggestion-form label { display:grid; gap:7px; color:var(--ink); font-size:.82rem; font-weight:760; }
+.suggestion-form input,.suggestion-form select { width:100%; min-height:48px; padding:11px 13px; border:1px solid var(--border); border-radius:13px; outline:none; background:white; color:var(--ink); font:inherit; font-size:.9rem; }
+.suggestion-form input:focus,.suggestion-form select:focus { border-color:var(--forest); box-shadow:0 0 0 4px rgba(22,95,85,.1); }
+.suggestion-privacy { margin:0; padding:11px 13px; border-radius:12px; background:var(--mint-light); color:var(--ink-soft); font-size:.72rem; line-height:1.5; }
+.suggestion-submit { min-height:50px; padding:11px 16px; display:flex; align-items:center; justify-content:center; gap:8px; border:0; border-radius:14px; background:#188f5a; color:white; cursor:pointer; font-weight:800; transition:background .2s,transform .2s; }
+.suggestion-submit:hover,.suggestion-submit:focus-visible { background:#10794a; transform:translateY(-1px); }
 
 .event-page { min-height:100vh; background:linear-gradient(180deg,#fffdf7 0,#fbf8f0 42%,#f1f6f1 100%); }
 .event-header { position:sticky; top:0; z-index:20; min-height:72px; padding:12px clamp(20px,5vw,76px); display:flex; align-items:center; justify-content:space-between; gap:24px; border-bottom:1px solid rgba(188,216,206,.75); background:rgba(251,248,240,.94); backdrop-filter:blur(16px); }
@@ -259,6 +277,9 @@ footer svg { color:var(--forest); }
   .descendant-row { align-items:flex-start; flex-direction:column; }
   .phone-link { min-height:38px; }
   .floating-whatsapp { right:14px; bottom:14px; width:52px; height:52px; min-height:0; padding:0; justify-content:center; }
+  .floating-suggestion { right:15px; bottom:78px; width:46px; height:46px; }
+  .suggestion-dialog { width:calc(100vw - 24px); }
+  .suggestion-dialog-card { padding:24px 18px; border-radius:20px; }
   .family-site-promo { margin:48px 14px 0; padding:24px 20px; align-items:stretch; flex-direction:column; gap:22px; border-radius:22px 22px 0 0; }
   .family-site-promo-copy { gap:12px; }
   .family-site-promo-icon { width:40px; height:40px; }

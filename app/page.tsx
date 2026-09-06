@@ -3,6 +3,7 @@
 import { useMemo, useState } from 'react';
 import { CalendarDays, ChevronDown, Heart, Leaf, Menu, MessageCircle, Search, Sparkles, UsersRound, X } from 'lucide-react';
 import { FamilySitePromo } from '@/components/family-site-promo';
+import { FamilySuggestionForm } from '@/components/family-suggestion-form';
 
 type Person = { name: string; phone?: string; deceased?: boolean; spouse?: Person; children?: Person[]; note?: string };
 
@@ -156,6 +157,7 @@ export default function Home() {
       </section>
       <FamilySitePromo />
       <footer><Leaf aria-hidden="true" size={17} /><p>Dipelihara sebagai kenangan untuk generasi hari ini dan akan datang.</p></footer>
+      <FamilySuggestionForm />
       <a className="floating-whatsapp" href={contactWhatsAppUrl} target="_blank" rel="noreferrer" title="Kemas kini keluarga" aria-label="Hubungi Mior Mohd Arif melalui WhatsApp untuk kemas kini keluarga"><MessageCircle aria-hidden="true" size={23} /><span>Kemas kini keluarga</span></a>
     </main>
   );
