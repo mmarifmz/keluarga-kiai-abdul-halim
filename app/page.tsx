@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { CalendarDays, ChevronDown, Heart, Leaf, Menu, MessageCircle, Search, Sparkles, UsersRound, X } from 'lucide-react';
+import { FamilySitePromo } from '@/components/family-site-promo';
 
 type Person = { name: string; phone?: string; deceased?: boolean; spouse?: Person; children?: Person[]; note?: string };
 
@@ -153,6 +154,7 @@ export default function Home() {
         {filteredBranches.length ? <div className="branch-grid">{filteredBranches.map(({ person, index }) => <BranchCard key={person.name} person={person} index={index} forceOpen={Boolean(query.trim())} />)}</div> : <div className="empty-state"><Search aria-hidden="true" size={24} /><h3>Tiada nama ditemui</h3><p>Cuba ejaan atau nombor telefon yang lain.</p><button type="button" onClick={() => setQuery('')}>Lihat semua keluarga</button></div>}
         <div className="legend"><span><span className="legend-dot" /> Garis keturunan</span><span><Heart aria-hidden="true" size={14} /> Pasangan</span><span><span className="mini-pill">Almarhum/ah</span> Telah meninggal dunia</span></div>
       </section>
+      <FamilySitePromo />
       <footer><Leaf aria-hidden="true" size={17} /><p>Dipelihara sebagai kenangan untuk generasi hari ini dan akan datang.</p></footer>
       <a className="floating-whatsapp" href={contactWhatsAppUrl} target="_blank" rel="noreferrer" title="Kemas kini keluarga" aria-label="Hubungi Mior Mohd Arif melalui WhatsApp untuk kemas kini keluarga"><MessageCircle aria-hidden="true" size={23} /><span>Kemas kini keluarga</span></a>
     </main>

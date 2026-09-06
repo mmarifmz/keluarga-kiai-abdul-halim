@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { ArrowLeft, CalendarDays, CalendarPlus, ChevronDown, Clock3, Leaf, MapPin, MessageCircle, Navigation } from 'lucide-react';
 import { EventCountdown } from './countdown';
 import { PosterLightbox } from './poster-lightbox';
+import { FamilySitePromo } from '@/components/family-site-promo';
 
 export const metadata: Metadata = {
   title: 'Program Keluarga 2026 | Kiai Hj. Abdul Halim',
@@ -107,6 +108,7 @@ export default function Program2026() {
         </div>
       </section>
 
+      <FamilySitePromo />
       <footer className="event-footer"><p>Jika ada pertanyaan atau pembetulan program, sila hubungi kami melalui WhatsApp.</p><a href={contactWhatsAppUrl} target="_blank" rel="noreferrer"><MessageCircle aria-hidden="true" size={18} /> Hubungi melalui WhatsApp</a></footer>
       <a className="floating-whatsapp" href={contactWhatsAppUrl} target="_blank" rel="noreferrer" title="Pertanyaan program" aria-label="Hubungi melalui WhatsApp untuk pertanyaan Program 2026"><MessageCircle aria-hidden="true" size={23} /><span>Pertanyaan program</span></a>
     </main>

@@ -128,6 +128,21 @@ h1 { margin:0; font-size:clamp(2.7rem,7vw,5.8rem); line-height:.96; letter-spaci
 footer { min-height:110px; padding:32px 20px; display:flex; align-items:center; justify-content:center; gap:10px; border-top:1px solid var(--border); background:#f4f3e9; color:var(--ink-soft); text-align:center; font-size:.88rem; }
 footer p { margin:0; }
 footer svg { color:var(--forest); }
+.family-site-promo { position:relative; max-width:1180px; margin:72px auto 0; padding:28px 30px; overflow:hidden; display:flex; align-items:center; justify-content:space-between; gap:30px; border:1px solid rgba(199,142,61,.3); border-radius:26px 26px 0 0; background:linear-gradient(130deg,var(--forest-deep),#176b5f); color:white; box-shadow:0 22px 60px rgba(13,74,67,.16); }
+.family-site-promo::after { content:''; position:absolute; right:-70px; top:-95px; width:260px; height:260px; border:1px solid rgba(247,232,201,.18); border-radius:46% 54% 65% 35%; transform:rotate(24deg); pointer-events:none; }
+.family-site-promo-copy { position:relative; z-index:1; max-width:670px; display:flex; align-items:flex-start; gap:16px; }
+.family-site-promo-icon { width:46px; height:46px; flex:0 0 auto; display:grid; place-items:center; border:1px solid rgba(247,232,201,.35); border-radius:50% 50% 50% 13px; background:rgba(255,255,255,.08); color:#f1d4a6; }
+.family-site-promo-copy p { margin:0 0 6px; color:#f1d4a6; font-size:.7rem; font-weight:850; letter-spacing:.13em; text-transform:uppercase; }
+.family-site-promo-copy h2 { margin:0; color:white; font-size:clamp(1.55rem,3vw,2.35rem); line-height:1.05; letter-spacing:-.025em; font-weight:610; }
+.family-site-promo-copy div>span { display:block; margin-top:9px; color:#c7ddd7; font-size:.88rem; line-height:1.55; }
+.family-site-promo-action { position:relative; z-index:1; flex:0 0 auto; display:flex; align-items:center; gap:16px; }
+.family-site-promo-price { min-width:82px; display:grid; text-align:right; }
+.family-site-promo-price small { color:#b8d5ce; font-size:.67rem; font-weight:750; letter-spacing:.08em; text-transform:uppercase; }
+.family-site-promo-price strong { font-family:var(--font-newsreader),Georgia,serif; color:#f5d9a9; font-size:2rem; line-height:1; }
+.family-site-promo-action a { min-height:58px; padding:10px 14px; display:flex; align-items:center; gap:10px; border:1px solid rgba(255,255,255,.85); border-radius:16px; background:white; color:var(--forest-deep); text-decoration:none; font-weight:820; box-shadow:0 10px 28px rgba(0,0,0,.14); transition:transform .2s,background .2s; }
+.family-site-promo-action a:hover,.family-site-promo-action a:focus-visible { background:#fff9ed; transform:translateY(-2px); }
+.family-site-promo-action a span { display:grid; white-space:nowrap; }
+.family-site-promo-action a small { color:#6a817b; font-size:.65rem; font-weight:760; }
 .floating-whatsapp { position:fixed; right:22px; bottom:22px; z-index:30; width:56px; height:56px; display:flex; align-items:center; justify-content:center; border:2px solid rgba(255,255,255,.9); border-radius:50%; background:#188f5a; color:white; text-decoration:none; box-shadow:0 12px 32px rgba(8,80,48,.28); transition:transform .2s,background .2s; }
 .floating-whatsapp span { display:none; }
 .floating-whatsapp:hover,.floating-whatsapp:focus-visible { background:#10794a; transform:translateY(-2px); }
@@ -245,6 +260,13 @@ footer svg { color:var(--forest); }
   .descendant-row { align-items:flex-start; flex-direction:column; }
   .phone-link { min-height:38px; }
   .floating-whatsapp { right:14px; bottom:14px; width:52px; height:52px; min-height:0; padding:0; justify-content:center; }
+  .family-site-promo { margin:48px 14px 0; padding:24px 20px; align-items:stretch; flex-direction:column; gap:22px; border-radius:22px 22px 0 0; }
+  .family-site-promo-copy { gap:12px; }
+  .family-site-promo-icon { width:40px; height:40px; }
+  .family-site-promo-copy div>span { font-size:.82rem; }
+  .family-site-promo-action { align-items:stretch; flex-direction:column; gap:12px; }
+  .family-site-promo-price { text-align:left; }
+  .family-site-promo-action a { width:100%; justify-content:center; }
   .event-header { min-height:64px; padding-inline:16px; }
   .event-header .brand span:last-child { max-width:190px; }
   .event-back { width:42px; padding:0; justify-content:center; }
