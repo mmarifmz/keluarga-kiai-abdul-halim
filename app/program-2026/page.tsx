@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { ArrowLeft, CalendarDays, CalendarPlus, ChevronDown, Clock3, Leaf, MapPin, MessageCircle, Navigation } from 'lucide-react';
+import { EventCountdown } from './countdown';
 
 export const metadata: Metadata = {
   title: 'Program Keluarga 2026 | Kiai Hj. Abdul Halim',
@@ -53,6 +54,7 @@ export default function Program2026() {
           <p className="event-kicker">Perhimpunan keluarga · 2026</p>
           <h1>Majlis Keluarga Besar Haji Shukur</h1>
           <p className="event-lead">Menghimpunkan ahli keluarga untuk bertahlil, berkenalan dan mengeratkan silaturrahim.</p>
+          <EventCountdown />
           <div className="event-facts">
             <div><span className="event-fact-icon"><CalendarDays aria-hidden="true" size={20} /></span><p><small>Tarikh</small><strong>12 September 2026</strong><span>30 Rabiulawal 1448H</span><a className="event-hijri-source" href="https://www.e-solat.gov.my/index.php?siteId=24&pageId=26" target="_blank" rel="noreferrer">Rujukan: Portal e-Solat JAKIM</a></p></div>
             <div><span className="event-fact-icon"><MapPin aria-hidden="true" size={20} /></span><p><small>Tempat</small><strong>Dewan Orang Ramai</strong><span>Taman Koperasi Polis Fasa 2, Kuala Lumpur</span><a className="event-map-link" href={eventWazeUrl} target="_blank" rel="noreferrer" aria-label="Buka lokasi Dewan Orang Ramai Taman Koperasi Polis Fasa 2 di Waze"><Navigation aria-hidden="true" size={16} /> Buka di Waze</a></p></div>

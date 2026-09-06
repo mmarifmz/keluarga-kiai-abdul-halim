@@ -140,6 +140,17 @@ footer svg { color:var(--forest); }
 .event-kicker { margin:0 0 12px; color:var(--gold); font-size:.76rem; font-weight:850; letter-spacing:.17em; text-transform:uppercase; }
 .event-hero h1 { max-width:620px; margin:0; font-size:clamp(3rem,6vw,5.7rem); line-height:.92; letter-spacing:-.055em; font-weight:590; }
 .event-lead { max-width:610px; margin:24px 0 30px; color:var(--ink-soft); font-size:1.05rem; line-height:1.75; }
+.event-countdown { margin:0 0 18px; padding:16px; border:1px solid rgba(174,125,50,.28); border-radius:18px; background:linear-gradient(135deg,rgba(255,248,229,.96),rgba(244,250,246,.96)); box-shadow:0 10px 28px rgba(60,45,20,.07); }
+.event-countdown-heading { margin-bottom:12px; display:flex; align-items:center; gap:8px; color:var(--gold); font-size:.72rem; font-weight:850; letter-spacing:.09em; text-transform:uppercase; }
+.countdown-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; }
+.countdown-grid>div { min-height:70px; padding:9px 5px; display:grid; place-items:center; align-content:center; gap:2px; border:1px solid rgba(188,216,206,.85); border-radius:13px; background:rgba(255,254,249,.92); }
+.countdown-grid strong { font-family:var(--font-newsreader),Georgia,serif; color:var(--forest-deep); font-size:1.75rem; font-variant-numeric:tabular-nums; line-height:1; }
+.countdown-grid span { color:var(--ink-soft); font-size:.67rem; font-weight:760; letter-spacing:.04em; text-transform:uppercase; }
+.event-countdown-message { min-height:92px; display:flex; align-items:center; gap:13px; color:var(--forest); }
+.event-countdown-message>svg { flex:0 0 auto; }
+.event-countdown-message div { display:grid; gap:3px; }
+.event-countdown-message small { color:var(--ink-soft); font-size:.72rem; }
+.event-countdown-message strong { font-family:var(--font-newsreader),Georgia,serif; color:var(--forest-deep); font-size:1.35rem; }
 .event-facts { display:grid; gap:12px; }
 .event-facts>div { padding:15px 16px; display:flex; align-items:flex-start; gap:13px; border:1px solid var(--border); border-radius:17px; background:rgba(255,254,249,.86); box-shadow:0 8px 24px rgba(16,65,58,.055); }
 .event-fact-icon { width:40px; height:40px; flex:0 0 auto; display:grid; place-items:center; border-radius:12px; background:var(--mint-light); color:var(--forest); }
@@ -231,6 +242,10 @@ footer svg { color:var(--forest); }
   .event-hero { padding:44px 16px 52px; gap:34px; }
   .event-hero h1 { font-size:clamp(2.8rem,14vw,4.2rem); }
   .event-lead { font-size:1rem; }
+  .event-countdown { padding:13px; }
+  .countdown-grid { gap:5px; }
+  .countdown-grid>div { min-height:64px; }
+  .countdown-grid strong { font-size:1.5rem; }
   .calendar-menu { width:100%; }
   .event-featured-poster { border-width:5px; border-radius:18px; }
   .schedule-section { padding:54px 18px; grid-template-columns:1fr; gap:30px; }
