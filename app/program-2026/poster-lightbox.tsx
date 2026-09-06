@@ -1,13 +1,7 @@
 'use client';
 
-import { ZoomIn } from 'lucide-react';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog';
+import { X, ZoomIn } from 'lucide-react';
+import { useRef } from 'react';
 
 type PosterLightboxProps = {
   src: string;
@@ -26,28 +20,36 @@ export function PosterLightbox({
   height,
   figureClassName,
 }: PosterLightboxProps) {
+  const dialogRef = useRef<HTMLDialogElement>(null);
+
+  const openDialog = () => dialogRef.current?.showModal();
+  const closeDialog = () => dialogRef.current?.close();
+
   return (
     <figure className={figureClassName}>
-      <Dialog>
-        <DialogTrigger
-          render={
-            <button
-              type="button"
-              className="poster-zoom-trigger"
-              aria-label={`Besarkan ${caption.toLowerCase()}`}
-            />
-          }
-        >
-          <img src={src} alt={alt} width={width} height={height} />
-          <span className="poster-zoom-hint"><ZoomIn aria-hidden="true" size={17} /> Klik untuk besarkan</span>
-        </DialogTrigger>
-        <DialogContent className="poster-lightbox-content">
-          <DialogTitle className="sr-only">{caption}</DialogTitle>
-          <DialogDescription className="sr-only">Paparan besar poster. Tekan Escape atau butang tutup untuk kembali.</DialogDescription>
+      <button
+        type="button"
+        className="poster-zoom-trigger"
+        aria-label={`Besarkan ${caption.toLowerCase()}`}
+        onClick={openDialog}
+      >
+        <img src={src} alt={alt} width={width} height={height} />
+        <span className="poster-zoom-hint"><ZoomIn aria-hidden="true" size={17} /> Klik untuk besarkan</span>
+      </button>
+      <dialog
+        ref={dialogRef}
+        className="poster-lightbox-dialog"
+        aria-label={caption}
+        onClick={(event) => {
+          if (event.target === event.currentTarget) closeDialog();
+        }}
+      >
+        <div className="poster-lightbox-content">
+          <button type="button" className="poster-lightbox-close" onClick={closeDialog} aria-label="Tutup paparan besar poster"><X aria-hidden="true" size={22} /></button>
           <img src={src} alt={alt} width={width} height={height} />
           <p>{caption}</p>
-        </DialogContent>
-      </Dialog>
+        </div>
+      </dialog>
       <figcaption>{caption}</figcaption>
     </figure>
   );
