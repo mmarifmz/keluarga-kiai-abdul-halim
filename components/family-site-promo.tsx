@@ -1,8 +1,6 @@
-import { MessageCircle, Sparkles } from 'lucide-react';
+import { ShoppingBag, Sparkles } from 'lucide-react';
 
-const avanteWhatsAppUrl = `https://wa.me/601111055559?text=${encodeURIComponent(
-  'Assalamualaikum Avante Intelligence, saya berminat dengan minisite salasilah keluarga serendah RM49.',
-)}`;
+const mariBuyProductUrl = 'https://maribuy.ws/kedai/avanteintel/produk/digitalisasi-salasilah-keluarga-lakaran-ke-minisite';
 
 export function FamilySitePromo() {
   return (
@@ -17,8 +15,8 @@ export function FamilySitePromo() {
       </div>
       <div className="family-site-promo-action">
         <div className="family-site-promo-price"><small>Serendah</small><strong>RM49</strong></div>
-        <a className="family-site-promo-whatsapp" href={avanteWhatsAppUrl} target="_blank" rel="nofollow noreferrer" aria-label="Hubungi Avante Intelligence melalui WhatsApp" title="WhatsApp Avante Intelligence">
-          <MessageCircle aria-hidden="true" size={24} />
+        <a className="family-site-promo-maribuy" href={mariBuyProductUrl} target="_blank" rel="nofollow noreferrer" aria-label="Lihat pakej minisite salasilah keluarga di MariBuy" title="Lihat pakej di MariBuy">
+          <ShoppingBag aria-hidden="true" size={24} />
         </a>
       </div>
     </aside>
